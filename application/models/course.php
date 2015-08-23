@@ -8,9 +8,16 @@ class Course extends CI_Controller
 	public function add_course($course)
 	{
 		$query = "INSERT INTO courses (name, description, created_at) 
-						VALUES (?, ?, ?)";
-		$values = array($course['course_name'], $course['course_description'], date("Y M jS H:i A"));
+						VALUES (?, ?, now())";
+		$values = array($course['course_name'], $course['course_description']);
 		return $this->db->query($query, $values);
+	}
+	public function delete($id)
+	{
+		$query = "DELETE FROM courses
+				WHERE id=?";
+		$value = array($id);
+		return $this->db->query($query, $value);
 	}
 }
 

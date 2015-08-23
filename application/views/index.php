@@ -30,6 +30,7 @@
 	        	</tr>
 	        </table>
         </form>
+        <div style="color:red;"><?= $this->session->flashdata('errors') ?> </div>
         <table class="table table-striped display_course">
  			<thead>
  				<tr>
@@ -48,8 +49,8 @@
 				<tr>
 	 				<td><?= $course['name']?></td>
 	 				<td><?= $course['description'] ?> </td>
-	 				<td><?= $course['created_at'] ?></td>
-	 				<td><a href="/courses/destroy/id">remove</a></td>
+	 				<td><?= date("Y M jS H:i A", strtotime($course['created_at'])) ?></td>
+	 				<td><a href="/courses/destroy/<?= $course['id'] ?>">remove</a></td>
 	 			</tr>
 <?php
 			}
