@@ -12,6 +12,12 @@ class Course extends CI_Controller
 		$values = array($course['course_name'], $course['course_description']);
 		return $this->db->query($query, $values);
 	}
+	public function get_del_course($id)
+	{
+		$query = "SELECT * FROM courses WHERE id=?";
+		$value = array($id);
+		return $this->db->query($query, $value)->row_array();
+	}
 	public function delete($id)
 	{
 		$query = "DELETE FROM courses

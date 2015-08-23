@@ -15,16 +15,26 @@
         <table class="comfirm_table">
         	<tr>
         		<td>Name:</td>
-        		<td>Math</td>
+        		<td><?= $course['name']; ?></td>
         	</tr>
         	<tr>
         		<td>Description:</td>
-        		<td>Descritption about this course...</td>
+        		<td><?= $course['description']; ?></td>
         	</tr>
         </table>
-        <form action="****" method="post">
-        	<input type="submit" class="btn btn-default" name="no" value="No">
-        	<input type="submit" class="btn btn-danger" name="yes" value="Yes!I want to delete this">
-        </form>
+        <table>
+            <tr>
+                <td>
+                <form action="/courses" method="post">
+                    <input type="submit" class="btn btn-default" name="no" value="No">
+                </form>
+                </td>
+                <td>
+                <form action="/courses/delete/<?= $id ?>" method="post">
+                    <input type="submit" class="btn btn-danger" name="yes" value="Yes!I want to delete this">
+                </form>
+                </td>
+            </tr>   
+        </table>
     </body>
 </html>

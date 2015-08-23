@@ -18,7 +18,7 @@ class Courses extends CI_Controller
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->session->set_flashdata('errors', validation_errors());
-			$this->go_main_page();
+			redirect('courses');
 		}
 		else
 		{
@@ -28,6 +28,12 @@ class Courses extends CI_Controller
 		}
 	}
 	public function destroy($id)
+	{
+		$this->load->model('course');
+		$course = $this->course->get_del_course($id);
+		$this->load->view('comfirm', array('id' => $id, 'course' => $course));
+	}
+		public function delete($id)
 	{
 		$this->load->model('course');
 		$this->course->delete($id);
